@@ -4,7 +4,7 @@ import { RootState } from "../redux/store";
 import CharacterCard from "../components/CharacterCard";
 import LocationCard from "../components/LocationCard";
 import EpisodeCard from "../components/EpisodeCard";
-import "./characters.css";
+import "./Characters.css"
 
 
 const Favorites: React.FC = () => {

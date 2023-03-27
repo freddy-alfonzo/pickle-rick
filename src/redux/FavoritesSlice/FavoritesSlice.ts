@@ -31,7 +31,10 @@ export const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addCharacter: (state, action: PayloadAction<Character>) => {
+      // Redux toolkit makes all mutations into immutable operations, therefore, i can use a .push, spread operator is the other option
       state.favCharacters.push(action.payload);
+
+      //adding the new array to localstorage
       localStorage.setItem(
         "favCharacters",
         JSON.stringify(state.favCharacters)
@@ -43,6 +46,7 @@ export const favoritesSlice = createSlice({
       state.favCharacters = state.favCharacters.filter(
         (char) => char.id !== action.payload.id
       );
+      //adding the new Characters array to localstorage
       localStorage.setItem(
         "favCharacters",
         JSON.stringify(state.favCharacters)
@@ -54,7 +58,6 @@ export const favoritesSlice = createSlice({
     },
 
     deleteLocation: (state, action: PayloadAction<Location>) => {
-      //adding to the state only those locations that dont have the same id that the one that is being removed
       state.favLocations = state.favLocations.filter(
         (loc) => loc.id !== action.payload.id
       );
@@ -63,15 +66,23 @@ export const favoritesSlice = createSlice({
     addEpisode: (state, action: PayloadAction<Episode>) => {
       state.favEpisodes.push(action.payload);
       localStorage.setItem("favEpisodes", JSON.stringify(state.favEpisodes));
-  },
+    },
 
-  deleteEpisode: (state, action: PayloadAction<Episode>) => {
-    //adding to the state only those episodes that dont have the same id that the one that is being removed
-    state.favEpisodes = state.favEpisodes.filter((char) => char.id !== action.payload.id);
-    localStorage.setItem("favEpisodes", JSON.stringify(state.favEpisodes));
-  },
+    deleteEpisode: (state, action: PayloadAction<Episode>) => {
+      state.favEpisodes = state.favEpisodes.filter(
+        (char) => char.id !== action.payload.id
+      );
+      localStorage.setItem("favEpisodes", JSON.stringify(state.favEpisodes));
+    },
   },
 });
 
-export const { addCharacter, deleteCharacter, addEpisode, deleteEpisode, addLocation, deleteLocation } = favoritesSlice.actions;
+export const {
+  addCharacter,
+  deleteCharacter,
+  addEpisode,
+  deleteEpisode,
+  addLocation,
+  deleteLocation,
+} = favoritesSlice.actions;
 export default favoritesSlice.reducer;

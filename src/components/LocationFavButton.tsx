@@ -9,7 +9,7 @@ interface ButtonProps {
   location: Location;
 }
 
-export const AddButton = ({ location }: ButtonProps) => {
+export const AddButton:React.FC<ButtonProps> = ({ location }: ButtonProps) => {
 
   const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ export const AddButton = ({ location }: ButtonProps) => {
   );
 };
 
-export const DeleteButton = ({ location }: ButtonProps) => {
+export const DeleteButton:React.FC<ButtonProps> = ({ location }: ButtonProps) => {
   const dispatch = useDispatch();
 
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {

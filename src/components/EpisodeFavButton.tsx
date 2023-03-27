@@ -9,7 +9,7 @@ interface ButtonProps {
   episode:Episode
 }
 
-export const AddButton = ({ episode }: ButtonProps) => {
+export const AddButton:React.FC<ButtonProps> = ({ episode }: ButtonProps) => {
 
   const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ export const AddButton = ({ episode }: ButtonProps) => {
   );
 };
 
-export const DeleteButton = ({ episode }: ButtonProps) => {
+export const DeleteButton:React.FC<ButtonProps> = ({ episode }: ButtonProps) => {
   const dispatch = useDispatch();
 
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {

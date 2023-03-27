@@ -13,10 +13,10 @@
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
   }
+  .fav-button:hover {
+    background-color: #961c28;
+  }
   .fav-button svg {
     margin-left: 5px;
   }
   
-  .fav-button:hover {
-    background-color: #961c28;
-  }

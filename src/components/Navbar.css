@@ -11,21 +11,24 @@
   margin: 6px 10px;
   align-items: center;
 }
+.navbar__logo__link{
+  display: flex;
+  }
 .navbar__logo img {
   width: 40px;
   height: 40px;
-}
-.navbar__nav {
-  width: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: end;
 }
 .navbar__title {
   color: #fff;
   font-size: 30px;
   margin: 0;
   font-family: Georgia, "Times New Roman", Times, serif;
+}
+.navbar__nav {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 .navbar__nav ul {
   margin: 0;
@@ -35,7 +38,6 @@
   display: flex;
   justify-content: end;
 }
-
 .navbar__nav li a {
   display: block;
   font-size: 20px;
@@ -44,7 +46,6 @@
   margin-right: 10px;
   padding: 16px 16px;
 }
-
 .navbar__nav li a:hover {
   background-color: #222;
 }
@@ -60,6 +61,7 @@
   display: none;
   transition: 0.7s;
 }
+
 @media (max-width: 800px) {
   .navbar {
     display: block;

@@ -13,11 +13,15 @@ const Navbar: React.FC = () => {
       <div className="navbar">
         <div className="navbar__box">
           <div className="navbar__div"/>
+       
           <div className="navbar__logo">
+            <NavLink className="navbar__logo__link" to="/">
             <img src={logo} alt="logo" />
             <h1 className="navbar__title">Rick & Morty</h1>
             <img src={logo2} alt="logo" />
+            </NavLink>
           </div>
+ 
           <div className="navbar__toggler" onClick={()=>{setShow(!show)}}>
             <GiHamburgerMenu color="#fff" />
           </div>

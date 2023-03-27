@@ -9,7 +9,7 @@ interface CharacterProps {
   character: Character;
 }
 
-const CharacterCard = ({ character }: CharacterProps) => {
+const CharacterCard: React.FC<CharacterProps> = ({ character }: CharacterProps) => {
   const favCharacters = useSelector(
     (state: RootState) => state.favorites.favCharacters
   );

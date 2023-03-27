@@ -10,12 +10,14 @@ import Loading from "../components/Loading";
 
 const LocationDetails: React.FC = () => {
   const { id: locationId } = useParams();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [location, setLocation] = useState<Location>();
   const favLocations = useSelector(
     (state: RootState) => state.favorites.favLocations
   );
 
   const fetchLocationById = () => {
+    setIsLoading(true)
     fetch(`https://rickandmortyapi.com/api/location/${locationId}`)
       .then((res) => res.json())
       .then((res) => setLocation(res))
@@ -29,7 +31,7 @@ const LocationDetails: React.FC = () => {
   return (
     <div className="details-page">
       {location === undefined ? (
-        <Loading />
+        <Loading isLoading={isLoading}/>
       ) : (
         <>
           <img src={planets} alt="logo" className="details-page__planets" />

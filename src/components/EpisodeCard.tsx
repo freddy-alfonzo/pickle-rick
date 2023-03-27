@@ -10,7 +10,7 @@ interface EpisodeProps {
   episode: Episode;
 }
 
-const EpisodeCard = ({ episode }: EpisodeProps) => {
+const EpisodeCard: React.FC<EpisodeProps> = ({ episode }: EpisodeProps) => {
   const favEpisodes = useSelector(
     (state: RootState) => state.favorites.favEpisodes
   );

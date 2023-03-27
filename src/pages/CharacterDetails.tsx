@@ -7,19 +7,27 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import "./DetailPages.css";
 
-
 const CharacterDetails: React.FC = () => {
   const { id: characterId } = useParams();
   const [character, setCharacter] = useState<Character>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const favCharacters = useSelector(
     (state: RootState) => state.favorites.favCharacters
   );
 
   const fetchCharacterById = () => {
+    setIsLoading(true);
+
     fetch(`https://rickandmortyapi.com/api/character/${characterId}`)
       .then((res) => res.json())
-      .then((res) => setCharacter(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setCharacter(res);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
   };
   const status = () => {
     if (character?.status === "Alive") return "--green";
@@ -33,7 +41,7 @@ const CharacterDetails: React.FC = () => {
   return (
     <div className="details-page">
       {character === undefined ? (
-        <Loading />
+        <Loading isLoading={isLoading}/>
       ) : (
         <>
           <img
@@ -44,8 +52,8 @@ const CharacterDetails: React.FC = () => {
           <h2 className="details-page__text details-page__text--title">
             {character?.name}
           </h2>
-          {favCharacters.find((char) => char.id === character.id) === undefined ?
-          (
+          {favCharacters.find((char) => char.id === character.id) ===
+          undefined ? (
             <AddButton character={character} />
           ) : (
             <DeleteButton character={character} />
@@ -79,7 +87,9 @@ const CharacterDetails: React.FC = () => {
               </span>
               {character?.type}
             </p>
-          ) : ""} 
+          ) : (
+            ""
+          )}
 
           {/* Creating Link to the origin location if it is not unknown, using substring to get the id*/}
 
@@ -119,7 +129,9 @@ const CharacterDetails: React.FC = () => {
                 {character?.location.name}
               </Link>
             </p>
-          ) : "" }
+          ) : (
+            ""
+          )}
 
           <p className="details-page__text details-page__text--black">
             Episodes where <b>{character?.name}</b> appears:

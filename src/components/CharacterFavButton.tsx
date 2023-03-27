@@ -9,7 +9,7 @@ interface ButtonProps {
   character: Character;
 }
 
-export const AddButton = ({ character }: ButtonProps) => {
+export const AddButton: React.FC<ButtonProps> = ({ character }: ButtonProps) => {
 
   const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ export const AddButton = ({ character }: ButtonProps) => {
   );
 };
 
-export const DeleteButton = ({ character }: ButtonProps) => {
+export const DeleteButton:React.FC<ButtonProps> = ({ character }: ButtonProps) => {
   const dispatch = useDispatch();
 
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {

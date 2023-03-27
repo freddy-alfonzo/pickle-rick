@@ -4,7 +4,7 @@ import Pagination from "../components/Pagination";
 import { Location } from "../models/models";
 
 
-const Locations = () => {
+const Locations:React.FC = () => {
   const [locations, setLocations] = useState<Location[]>([]);
   const [page, setPage] = useState<number>(1);
   const [maxPage, setMaxPage] = useState<number>(42);

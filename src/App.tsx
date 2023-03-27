@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import Loading from "./components/Loading";
 import Navbar from "./components/Navbar";
 import {Characters, Favorites, Episodes, Locations, CharacterDetails, EpisodeDetails,  LocationDetails} from "./pages";
 
@@ -14,6 +15,7 @@ function App():JSX.Element {
         <Route path="/character/:id" element={<CharacterDetails />} />
         <Route path="/episode/:id" element={<EpisodeDetails />} />
         <Route path="/location/:id" element={<LocationDetails />} />
+        <Route path="/*" element={<Loading isLoading={false}/>} />
       </Routes>
     </>
   );

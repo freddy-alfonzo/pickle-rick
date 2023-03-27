@@ -3,7 +3,7 @@ import CharacterCard from "../components/CharacterCard";
 import Pagination from "../components/Pagination";
 import { Character } from "../models/models";
 
-const Characters = () => {
+const Characters:React.FC = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [page, setPage] = useState<number>(1);
   const [maxPage, setMaxPage] = useState<number>(42);

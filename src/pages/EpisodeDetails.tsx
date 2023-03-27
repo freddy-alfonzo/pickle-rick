@@ -10,12 +10,14 @@ import "./DetailPages.css";
 
 const EpisodeDetails: React.FC = () => {
   const { id: episodeId } = useParams();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [episode, setEpisode] = useState<Episode>();
   const favEpisodes = useSelector(
     (state: RootState) => state.favorites.favEpisodes
   );
 
   const fetchEpisodeById = () => {
+    setIsLoading(true)
     fetch(`https://rickandmortyapi.com/api/episode/${episodeId}`)
       .then((res) => res.json())
       .then((res) => setEpisode(res))
@@ -29,7 +31,7 @@ const EpisodeDetails: React.FC = () => {
   return (
     <div className="details-page">
       {episode === undefined ? (
-        <Loading />
+        <Loading isLoading={isLoading}/>
       ) : (
         <>
           <img src={logo} alt="logo" className="details-page__banner" />

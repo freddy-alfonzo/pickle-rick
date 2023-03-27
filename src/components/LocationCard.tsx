@@ -10,7 +10,7 @@ interface LocationProps {
   location: Location;
 }
 
-const LocationCard = ({ location }: LocationProps) => {
+const LocationCard:React.FC<LocationProps> = ({ location }: LocationProps) => {
   const favLocations = useSelector(
     (state: RootState) => state.favorites.favLocations
   );

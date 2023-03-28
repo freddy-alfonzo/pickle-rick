@@ -2,27 +2,43 @@ import { NavLink } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import logo2 from "../assets/images/logo2.png";
 import { GiHamburgerMenu } from "react-icons/gi";
-import {useState} from "react"
+import { useEffect, useState } from "react";
 import "./Navbar.css";
 
 const Navbar: React.FC = () => {
-  const [show, setShow] = useState<boolean>(true)
+  const [show, setShow] = useState<boolean>();
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.screen.width > 800) setShow(true);
+      if (window.screen.width <= 800) setShow(false);
+    };
+    handleResize()
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
       <div className="navbar">
         <div className="navbar__box">
-          <div className="navbar__div"/>
-       
+          <div className="navbar__div" />
+
           <div className="navbar__logo">
             <NavLink className="navbar__logo__link" to="/">
-            <img src={logo} alt="logo" />
-            <h1 className="navbar__title">Rick & Morty</h1>
-            <img src={logo2} alt="logo" />
+              <img src={logo} alt="logo" />
+              <h1 className="navbar__title">Rick & Morty</h1>
+              <img src={logo2} alt="logo" />
             </NavLink>
           </div>
- 
-          <div className="navbar__toggler" onClick={()=>{setShow(!show)}}>
+
+          <div
+            className="navbar__toggler"
+            onClick={() => {
+              setShow(!show);
+            }}
+          >
             <GiHamburgerMenu color="#fff" />
           </div>
         </div>

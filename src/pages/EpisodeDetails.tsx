@@ -41,8 +41,6 @@ const EpisodeDetails: React.FC = () => {
     fetchEpisodeById();
   }, [episodeId]);
 
-  console.log(characters);
-
   return (
     <div className="details-page">
       {episode === undefined ? (
@@ -79,7 +77,7 @@ const EpisodeDetails: React.FC = () => {
 
           {/* Create Link for every character that appears on this episode*/}
           <div className="card-container">
-          {characters.map(char => <CharacterCard character={char}/>)}
+          {characters.map(char => <CharacterCard character={char} key={char.id}/>)}
 
           </div>
           

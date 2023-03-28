@@ -82,7 +82,7 @@ const LocationDetails: React.FC = () => {
 
               <div className="card-container">
               
-          {characters.map(char => <CharacterCard character={char}/>)}
+          {characters.map(char => <CharacterCard character={char} key={char.id}/>)}
 
           </div>
                 

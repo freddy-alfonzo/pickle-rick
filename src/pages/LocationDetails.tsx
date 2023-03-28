@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import { Location } from "../models/models";
 import { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
+import { Character } from "../models/models";
+import CharacterCard from "../components/CharacterCard";
 import { AddButton, DeleteButton } from "../components/LocationFavButton";
 import planets from "../assets/images/planets.jpg";
 import "./DetailPages.css";
@@ -12,17 +14,27 @@ const LocationDetails: React.FC = () => {
   const { id: locationId } = useParams();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [location, setLocation] = useState<Location>();
+  const [characters, setCharacters] = useState<Character[]>([])
   const favLocations = useSelector(
     (state: RootState) => state.favorites.favLocations
   );
 
-  const fetchLocationById = () => {
+  const fetchLocationById = async() => {
     setIsLoading(true)
-    fetch(`https://rickandmortyapi.com/api/location/${locationId}`)
+    const loc = await fetch(`https://rickandmortyapi.com/api/location/${locationId}`)
       .then((res) => res.json())
-      .then((res) => setLocation(res))
       .catch((err) => console.log(err));
+      setLocation(loc)
+
+      let data: Character[] = await Promise.all(
+        loc.residents.map((x: string) => {
+          return fetch(x).then((res) => res.json());
+        })
+      );
+      setCharacters(data);
+      setIsLoading(false)
   };
+ 
 
   useEffect(() => {
     fetchLocationById();
@@ -64,25 +76,17 @@ const LocationDetails: React.FC = () => {
           {location?.residents.length !== 0 ? (
             <>
               <p className="details-page__text details-page__text--black">
-                Id of the Characters that are residents on this location:
+               Characters that are residents on this location:
               </p>
               <br />
 
-              <div className="table-container">
-                {location?.residents.map((char) => {
-                  const charId: string = char.substring(42, char.length);
+              <div className="card-container">
+              
+          {characters.map(char => <CharacterCard character={char}/>)}
 
-                  return (
-                    <Link
-                      to={`/character/${charId}`}
-                      key={charId}
-                      className="table-container__element table-container__element--wider"
-                    >
-                      {charId}
-                    </Link>
-                  );
-                })}
-              </div>
+          </div>
+                
+          
             </>
           ) : (
             <p className="details-page__text details-page__text--black">

@@ -78,11 +78,15 @@ const EpisodeDetails: React.FC = () => {
             <br />
 
             {/* Create Link for every character that appears on this episode*/}
-            <div className="card-container">
-              {characters.map((char) => (
-                <CharacterCard character={char} key={char.id} />
-              ))}
-            </div>
+            {characters === undefined ? (
+              <Loading isLoading={isLoading} />
+            ) : (
+              <div className="card-container">
+                {characters.map((char) => (
+                  <CharacterCard character={char} key={char.id} />
+                ))}
+              </div>
+            )}
           </section>
         </>
       )}

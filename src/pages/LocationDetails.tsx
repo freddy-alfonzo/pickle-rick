@@ -83,12 +83,15 @@ const LocationDetails: React.FC = () => {
                 Characters that are residents on this location:
               </p>
               <br />
-
-              <div className="card-container">
-                {characters.map((char) => (
-                  <CharacterCard character={char} key={char.id} />
-                ))}
-              </div>
+              {characters === undefined ? (
+                <Loading isLoading={isLoading} />
+              ) : (
+                <div className="card-container">
+                  {characters.map((char) => (
+                    <CharacterCard character={char} key={char.id} />
+                  ))}
+                </div>
+              )}
             </section>
           ) : (
             <p className="details-page__text details-page__text--black">

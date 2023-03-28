@@ -28,7 +28,7 @@ const Locations:React.FC = () => {
   }, [baseUrl]);
 
   return (
-    <>
+    <section>
       <div className="filters">
         <input
           name="name"
@@ -70,7 +70,7 @@ const Locations:React.FC = () => {
         )}
       </>
       <Pagination setPage={setPage} maxPage={maxPage} />
-    </>
+    </section>
   );
 };
 

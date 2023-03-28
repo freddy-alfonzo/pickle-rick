@@ -33,8 +33,7 @@ const EpisodeDetails: React.FC = () => {
       })
     );
     setCharacters(data);
-    setIsLoading(false)
-    
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -47,40 +46,44 @@ const EpisodeDetails: React.FC = () => {
         <Loading isLoading={isLoading} />
       ) : (
         <>
-          <img src={logo} alt="logo" className="details-page__banner" />
-          <h2 className="details-page__text details-page__text--title">
-            <span className="details-page__text--black"> Title: </span>
+          <article>
+            <img src={logo} alt="logo" className="details-page__banner" />
+            <h2 className="details-page__text details-page__text--title">
+              <span className="details-page__text--black"> Title: </span>
 
-            {episode?.name}
-          </h2>
-          {favEpisodes.find((ep) => ep.id === episode.id) === undefined ? (
-            <AddButton episode={episode} />
-          ) : (
-            <DeleteButton episode={episode} />
-          )}
-          <p className=" details-page__text ">
-            <span className="details-page__text details-page__text--black">
-              Episode:
-            </span>
-            {episode?.episode}
-          </p>
-          <p className="details-page__text">
-            <span className="details-page__text details-page__text--black">
-              Air Date:
-            </span>
-            {episode?.air_date}
-          </p>
-          <p className="details-page__text details-page__text--black">
-           Characters that appear on this episode:
-          </p>
-          <br />
+              {episode?.name}
+            </h2>
+            {favEpisodes.find((ep) => ep.id === episode.id) === undefined ? (
+              <AddButton episode={episode} />
+            ) : (
+              <DeleteButton episode={episode} />
+            )}
+            <p className=" details-page__text ">
+              <span className="details-page__text details-page__text--black">
+                Episode:
+              </span>
+              {episode?.episode}
+            </p>
+            <p className="details-page__text">
+              <span className="details-page__text details-page__text--black">
+                Air Date:
+              </span>
+              {episode?.air_date}
+            </p>
+          </article>
+          <section>
+            <p className="details-page__text details-page__text--black">
+              Characters that appears on this episode:
+            </p>
+            <br />
 
-          {/* Create Link for every character that appears on this episode*/}
-          <div className="card-container">
-          {characters.map(char => <CharacterCard character={char} key={char.id}/>)}
-
-          </div>
-          
+            {/* Create Link for every character that appears on this episode*/}
+            <div className="card-container">
+              {characters.map((char) => (
+                <CharacterCard character={char} key={char.id} />
+              ))}
+            </div>
+          </section>
         </>
       )}
     </div>

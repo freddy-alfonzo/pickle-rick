@@ -58,7 +58,7 @@ const Favorites: React.FC = () => {
   }
 
   return (
-    <>
+    <section>
       <div className="filters">
         <select
           className="select"
@@ -74,7 +74,7 @@ const Favorites: React.FC = () => {
       </div>
           
           {GetFavorites()}
-    </>
+    </section>
   );
 };
 

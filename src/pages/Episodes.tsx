@@ -28,7 +28,7 @@ const Episodes = () => {
   }, [baseUrl]);
 
   return (
-    <>
+    <section>
       <div className="filters">
         <input
           name="name"
@@ -69,7 +69,7 @@ const Episodes = () => {
         )}
       </>
       <Pagination setPage={setPage} maxPage={maxPage} />
-    </>
+    </section>
   );
 };
 

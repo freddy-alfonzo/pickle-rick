@@ -28,7 +28,7 @@ const Characters:React.FC = () => {
   }, [baseUrl]);
 
   return (
-    <>
+    <section>
       <div className="filters">
         <input
           name="name"
@@ -100,7 +100,7 @@ const Characters:React.FC = () => {
         )}
       </>
       <Pagination setPage={setPage} maxPage={maxPage} />
-    </>
+    </section>
   );
 };
 

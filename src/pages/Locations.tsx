@@ -32,9 +32,9 @@ const Locations:React.FC = () => {
       <div className="filters">
         <input
           name="name"
-          type="text"
+          type="search"
           placeholder="Search by Name"
-          autoComplete="no"
+          autoComplete="off"
           onChange={(e) => {
             setName(e.target.value);
             setPage(1);

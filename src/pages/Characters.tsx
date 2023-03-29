@@ -34,7 +34,7 @@ const Characters:React.FC = () => {
           name="name"
           type="text"
           placeholder="Search by Name"
-          autoComplete="no"
+          autoComplete="off"
           onChange={(e) => {
             setName(e.target.value);
             setPage(1);
